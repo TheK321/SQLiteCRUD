@@ -1,8 +1,11 @@
 package com.example.sqlitecrud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
@@ -15,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btnNuevaTarea);
-
+        RecyclerView tareas = (RecyclerView) findViewById(R.id.recyclerViewTareas);
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -37,6 +40,31 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
             );
+
+            //retrieve all rows from table tarea
+            Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
+
+            //check if cursor is not null
+            if (cursor != null) {
+                //move to first row
+                cursor.moveToFirst();
+                //create a new adapter for the recycler view
+                TareasAdapter adapter;
+                //create a new dataset for the recycler view
+                String[] dataset = new String[cursor.getCount()];
+                //check if cursor is not at the end of the table
+                while (!cursor.isAfterLast()) {
+                    //get the value of the column name
+                    @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
+                    //add the value to the dataset
+                    dataset[cursor.getPosition()] = name;
+                }
+                //define the adapter
+                adapter = new TareasAdapter(dataset);
+                //set the adapter to the recycler view
+                tareas.setAdapter(adapter);
+            }
+
 
         } else {
             //Create a toast message to show that database is not created
