@@ -1,6 +1,7 @@
 package com.example.sqlitecrud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btnNuevaTarea);
         RecyclerView tareas = (RecyclerView) findViewById(R.id.recyclerViewTareas);
+        tareas.setLayoutManager(new LinearLayoutManager(this));
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
             );
-
+            //get readable database
+            database = databaseHelper.getReadableDatabase();
             //retrieve all rows from table tarea
             Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
 
@@ -52,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 TareasAdapter adapter;
                 //create a new dataset for the recycler view
                 String[] dataset = new String[cursor.getCount()];
-                //check if cursor is not at the end of the table
-                while (!cursor.isAfterLast()) {
+                //loop through all rows
+                for (int i = 0; i < cursor.getCount(); i++) {
                     //get the value of the column name
                     @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
                     //add the value to the dataset
@@ -63,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
                 adapter = new TareasAdapter(dataset);
                 //set the adapter to the recycler view
                 tareas.setAdapter(adapter);
+                //print the dataset
+                for (String s : dataset) {
+                    System.out.println(s);
+                }
+                adapter.notifyDataSetChanged();
             }
 
 
