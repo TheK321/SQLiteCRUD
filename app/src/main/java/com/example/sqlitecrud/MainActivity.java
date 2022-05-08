@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btnNuevaTarea);
-        ScrollView svTareas = (ScrollView) findViewById(R.id.scrollViewTareas);
-        LinearLayout llTareas = (LinearLayout) findViewById(R.id.linearLayoutTareas);
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //check if database is created
         if (database != null) {
             //Create a toast message to show that database is created
-            Toast.makeText(this, "Database is created", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Database is created", Toast.LENGTH_LONG).show();
             //open a new activity
             btn.setOnClickListener(v -> {
                 //Create a new intent to open the new activity
@@ -68,36 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
                     @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPCION));
                     //add the value to the dataset
-                    dataset[cursor.getPosition()] = name;
-
-                    CardView card = new CardView(new ContextThemeWrapper(MainActivity.this, R.style.Theme_SQLiteCRUD), null, 0);
-                    LinearLayout cardInner = new LinearLayout(new ContextThemeWrapper(MainActivity.this, R.style.Theme_SQLiteCRUD));
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                    );
-                    int margin = 8;
-                    params.setMargins(margin, margin, margin, margin);
-                    card.setLayoutParams(params);
-                    TextView tv_title = new TextView(this);
-                    tv_title.setLayoutParams(new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-                    ));
-                    tv_title.setTextAppearance(this, androidx.appcompat.R.style.TextAppearance_AppCompat_Title);
-                    tv_title.setText(name);
-
-                    TextView tv_caption = new TextView(this);
-                    tv_caption.setLayoutParams(new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-                    ));
-                    tv_caption.setText(description);
-                    tv_caption.setTextAppearance(this, androidx.appcompat.R.style.TextAppearance_AppCompat_Caption);
-
-                    cardInner.addView(tv_title);
-                    cardInner.addView(tv_caption);
-                    card.addView(cardInner);
-
-                    llTareas.addView(card);
+                    System.out.println(name + " " + description);
+                    cursor.moveToNext();
 
                 }
 
