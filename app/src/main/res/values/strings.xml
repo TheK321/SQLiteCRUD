@@ -2,4 +2,5 @@
     <string name="app_name">SQLiteCRUD</string>
     <string name="agregar">Agregar</string>
     <string name="strNuevaTarea">Nueva tarea</string>
+    <string name="strTxtActualizar">Actualizar \n tarea</string>
 </resources>

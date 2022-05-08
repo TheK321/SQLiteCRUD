@@ -1,7 +1,6 @@
 package com.example.sqlitecrud;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -17,7 +16,6 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -37,7 +35,7 @@ public class NuevaTareaActivity extends AppCompatActivity {
         fentrega = findViewById(R.id.editTextFechaEntrega);
         materia = findViewById(R.id.editTextMateria);
         dificultad = findViewById(R.id.ratingBarDificultad);
-        guardar = findViewById(R.id.btnAgregar);
+        guardar = findViewById(R.id.btnActualizar);
 
 
         fasignacion.setOnClickListener(new View.OnClickListener() {
