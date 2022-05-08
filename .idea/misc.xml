@@ -3,13 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_main.xml" value="0.22598870056497175" />
         <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_nueva_tarea.xml" value="0.25" />
         <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/tarea_row_item.xml" value="0.3614583333333333" />
-        <entry key="..\:/Users/axeli/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/drawable/ic_background_principal.xml" value="0.2075" />
-        <entry key="..\:/Users/axeli/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/axeli/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_nueva_tarea.xml" value="0.16" />
-        <entry key="..\:/Users/axeli/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/tarea_row_item.xml" value="0.2" />
       </map>
     </option>
   </component>

@@ -1,6 +1,7 @@
 package com.example.sqlitecrud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,8 +10,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btnNuevaTarea);
-        RecyclerView tareas = (RecyclerView) findViewById(R.id.recyclerViewTareas);
-        tareas.setLayoutManager(new LinearLayoutManager(this));
+        ScrollView svTareas = (ScrollView) findViewById(R.id.scrollViewTareas);
+        LinearLayout llTareas = (LinearLayout) findViewById(R.id.linearLayoutTareas);
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -59,18 +66,41 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < cursor.getCount(); i++) {
                     //get the value of the column name
                     @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
+                    @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPCION));
                     //add the value to the dataset
                     dataset[cursor.getPosition()] = name;
+
+                    CardView card = new CardView(new ContextThemeWrapper(MainActivity.this, R.style.Theme_SQLiteCRUD), null, 0);
+                    LinearLayout cardInner = new LinearLayout(new ContextThemeWrapper(MainActivity.this, R.style.Theme_SQLiteCRUD));
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    int margin = 8;
+                    params.setMargins(margin, margin, margin, margin);
+                    card.setLayoutParams(params);
+                    TextView tv_title = new TextView(this);
+                    tv_title.setLayoutParams(new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+                    ));
+                    tv_title.setTextAppearance(this, androidx.appcompat.R.style.TextAppearance_AppCompat_Title);
+                    tv_title.setText(name);
+
+                    TextView tv_caption = new TextView(this);
+                    tv_caption.setLayoutParams(new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+                    ));
+                    tv_caption.setText(description);
+                    tv_caption.setTextAppearance(this, androidx.appcompat.R.style.TextAppearance_AppCompat_Caption);
+
+                    cardInner.addView(tv_title);
+                    cardInner.addView(tv_caption);
+                    card.addView(cardInner);
+
+                    llTareas.addView(card);
+
                 }
-                //define the adapter
-                adapter = new TareasAdapter(dataset);
-                //set the adapter to the recycler view
-                tareas.setAdapter(adapter);
-                //print the dataset
-                for (String s : dataset) {
-                    System.out.println(s);
-                }
-                adapter.notifyDataSetChanged();
+
             }
 
 
