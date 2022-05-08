@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btnNuevaTarea);
         Button verTodo = (Button) findViewById(R.id.btnVerTodo);
+        TextView tvTituloCard = (TextView) findViewById(R.id.tvTituloCard);
+        TextView tvSubtituloCard = (TextView) findViewById(R.id.tvSubtituloCard);
+        TextView tvDescripcionCard = (TextView) findViewById(R.id.tvDescripcionCard);
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -61,26 +67,30 @@ public class MainActivity extends AppCompatActivity {
             //get readable database
             database = databaseHelper.getReadableDatabase();
             //retrieve all rows from table tarea
-            Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, null);
+            Cursor cursor = database.rawQuery("SELECT * FROM tarea where completada=0 ORDER BY fentrega asc", null);
 
             //check if cursor is not null
             if (cursor != null) {
-                //move to first row
-                cursor.moveToFirst();
-                //create a new adapter for the recycler view
-                TareasAdapter adapter;
-                //create a new dataset for the recycler view
-                String[] dataset = new String[cursor.getCount()];
-                //loop through all rows
-                for (int i = 0; i < cursor.getCount(); i++) {
+                //check if cursor has any rows
+                if (cursor.getCount() > 0) {
+                    //move to first row
+                    cursor.moveToFirst();
                     //get the value of the column name
                     @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
                     @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPCION));
+                    @SuppressLint("Range") String materia = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_MATERIA));
+                    @SuppressLint("Range") String fentrega = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_FENTREGA));
                     //add the value to the dataset
                     System.out.println(name + " " + description);
-                    cursor.moveToNext();
+                    tvTituloCard.setText(name);
+                    fentrega= fentrega.length()==6?fentrega.substring(0,2)+"/"+fentrega.substring(2,4)+"/"+fentrega.substring(4,7):fentrega.substring(0,1)+"/"+fentrega.substring(1,3)+"/"+fentrega.substring(3,7);
+                    tvSubtituloCard.setText(materia+" | "+fentrega);
+                    tvDescripcionCard.setText(description);
+
 
                 }
+
+
 
             }
 

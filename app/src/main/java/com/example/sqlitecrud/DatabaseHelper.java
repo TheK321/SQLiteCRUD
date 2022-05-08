@@ -1,8 +1,12 @@
 package com.example.sqlitecrud;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
+
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     //constants for db name and version
@@ -39,6 +43,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //constructor
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public SimpleCursorAdapter populateListViewFromDB(Context context) {
+        String columns[] = {DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_NOMBRE, DatabaseHelper.COLUMN_DESCRIPCION, DatabaseHelper.COLUMN_FASIGNADA, DatabaseHelper.COLUMN_FENTREGA, DatabaseHelper.COLUMN_MATERIA, DatabaseHelper.COLUMN_DIFICULTAD, DatabaseHelper.COLUMN_COMPLETADA};
+        Cursor cursor = new DatabaseHelper(context).getWritableDatabase().rawQuery("SELECT rowid _id,* FROM " + TABLE_NAME, null);
+        String[] fromFieldNames = new String[]{DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_NOMBRE, DatabaseHelper.COLUMN_DESCRIPCION, DatabaseHelper.COLUMN_FASIGNADA, DatabaseHelper.COLUMN_FENTREGA, DatabaseHelper.COLUMN_MATERIA, DatabaseHelper.COLUMN_DIFICULTAD, DatabaseHelper.COLUMN_COMPLETADA};
+        int[] toViewIDs = new int[]{R.id.tareaview_id, R.id.tareaview_nombre, R.id.tareaview_fechas, R.id.tareaview_materia, R.id.tareaview_dificultad};
+        SimpleCursorAdapter contactAdapter = new SimpleCursorAdapter(
+                context,
+                R.layout.tareaview,
+                cursor,
+                fromFieldNames,
+                toViewIDs
+        );
+        return contactAdapter;
     }
 
     @Override
