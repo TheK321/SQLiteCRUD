@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btn = (Button) findViewById(R.id.btnNuevaTarea);
+        Button verTodo = (Button) findViewById(R.id.btnVerTodo);
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -47,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
             );
+            verTodo.setOnClickListener(v -> {
+                //Create a new intent to open the new activity
+                Intent intent = new Intent(MainActivity.this, ActivityVerTodo.class);
+                //Start the new activity
+                startActivity(intent);
+                //Close the current activity
+                finish();
+                    }
+            );
+
             //get readable database
             database = databaseHelper.getReadableDatabase();
             //retrieve all rows from table tarea
