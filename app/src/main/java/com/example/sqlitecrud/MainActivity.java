@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //check if database is created
         if (database != null) {
             //Create a toast message to show that database is created
-            Toast.makeText(this, "Database is created", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Database is created", Toast.LENGTH_LONG).show();
             //open a new activity
             btn.setOnClickListener(v -> {
                 //Create a new intent to open the new activity
@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
                     @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPCION));
                     //add the value to the dataset
-                    dataset[cursor.getPosition()] = name;
+                    System.out.println(name + " " + description);
+                    cursor.moveToNext();
 
                 }
 
