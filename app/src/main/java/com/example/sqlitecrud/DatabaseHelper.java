@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
     //constants for db name and version
     public static final String DATABASE_NAME = "crud.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     //constants for identifying table and columns
     public static final String TABLE_NAME = "tarea";
@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_FENTREGA = "fentrega";
     public static final String COLUMN_MATERIA = "materia";
     public static final String COLUMN_DIFICULTAD = "dificultad";
+    public static final String COLUMN_COMPLETADA = "completada";
 
     //create table sql query
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "("
@@ -28,7 +29,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_FASIGNADA + " INTEGER,"
             + COLUMN_FENTREGA + " INTEGER,"
             + COLUMN_MATERIA + " TEXT,"
-            + COLUMN_DIFICULTAD + " INTEGER"
+            + COLUMN_DIFICULTAD + " INTEGER,"
+            + COLUMN_COMPLETADA + " INTEGER DEFAULT 0"
             + ")";
 
     //db version
