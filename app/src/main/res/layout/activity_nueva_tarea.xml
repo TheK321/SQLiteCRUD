@@ -17,15 +17,27 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="307dp"
-        android:layout_height="123dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        android:layout_width="302dp"
+        android:layout_height="105dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182"
-        app:srcCompat="@drawable/ic_ranking" />
+        app:layout_constraintVertical_bias="0.463"
+        app:srcCompat="@drawable/ic_ranking1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="282dp"
+        android:layout_height="277dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_alumnos1" />
 
     <TextView
         android:id="@+id/textView2"
@@ -33,47 +45,30 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
         android:text="Prioridad"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.189" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/strNuevaTarea"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.406" />
 
 
     <EditText
         android:id="@+id/editTextFechaEntrega"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:focusable="false"
         android:fontFamily="@font/poppins"
         android:hint="Fecha de entrega de la tarea"
         android:inputType="none"
         android:minHeight="48dp"
         android:textColor="#FF000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFechaAsignacion"
         app:layout_constraintVertical_bias="0.0" />
@@ -88,46 +83,29 @@
         android:inputType="textMultiLine"
         android:minHeight="48dp"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.294" />
-
-    <EditText
-        android:id="@+id/editTextDescripcionTarea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins"
-        android:hint="Descripción de la tarea"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        android:textColor="#FF000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombreTarea"
-        app:layout_constraintVertical_bias="0.007" />
+        app:layout_constraintVertical_bias="0.475" />
 
     <EditText
         android:id="@+id/editTextFechaAsignacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:focusable="false"
         android:fontFamily="@font/poppins"
         android:hint="Fecha de asignación de la tarea"
         android:inputType="none"
         android:minHeight="48dp"
         android:textColor="#FF000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescripcionTarea"
         app:layout_constraintVertical_bias="0.0" />
@@ -136,19 +114,36 @@
         android:id="@+id/editTextMateria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins"
         android:hint="Materia"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="#FF000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFechaEntrega"
         app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextDescripcionTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="Descripción de la tarea"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        android:textColor="#FF000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombreTarea"
+        app:layout_constraintVertical_bias="0.005" />
 
     <RatingBar
         android:id="@+id/ratingBarDificultad"
@@ -160,7 +155,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <Button
         android:id="@+id/btnAgregar"
@@ -172,8 +167,24 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.134" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/strNuevaTarea"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 </androidx.constraintlayout.widget.ConstraintLayout>
