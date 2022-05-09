@@ -15,6 +15,10 @@ public class ActivityEliminar extends AppCompatActivity {
         setContentView(R.layout.activity_eliminar);
         Button aceptar = (Button) findViewById(R.id.btnAceptar);
         Button cancelar = (Button) findViewById(R.id.btnRechazar);
+        //get bundle
+        Bundle bundle = getIntent().getExtras();
+        //get id
+        int id = bundle.getInt("id");
 
         // get a database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);

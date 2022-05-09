@@ -88,6 +88,8 @@ public class ActivityActualizar extends AppCompatActivity {
             eliminar.setOnClickListener(v -> {
                 //Create a new intent to open the new activity
                 Intent intent2 = new Intent(ActivityActualizar.this, ActivityEliminar.class);
+                //pass the data to the new activity
+                intent2.putExtra("id", id);
                 //Start the new activity
                 startActivity(intent2);
                 //Close the current activity

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" package="com.example.sqlitecrud">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.sqlitecrud">
 
     <application
         android:allowBackup="true"
@@ -13,13 +14,16 @@
         android:theme="@style/Theme.SQLiteCRUD"
         tools:targetApi="31">
         <activity
-            android:name="com.example.sqlitecrud.ActivityActualizar"
+            android:name=".ActivityDeletear"
             android:exported="false" />
         <activity
-            android:name="com.example.sqlitecrud.ActivityVerTodo"
+            android:name=".ActivityActualizar"
             android:exported="false" />
         <activity
-            android:name="com.example.sqlitecrud.ActivityEliminar"
+            android:name=".ActivityVerTodo"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityEliminar"
             android:exported="false" />
         <activity
             android:name=".NuevaTareaActivity"
