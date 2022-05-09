@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/drawable/ic_eliminar.xml" value="0.1935" />
+        <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_actualizar.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_eliminar.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_nueva_tarea.xml" value="0.25" />
         <entry key="..\:/Users/17mar/AndroidStudioProjects/SQLiteCRUD/app/src/main/res/layout/activity_ver_todo.xml" value="0.25" />

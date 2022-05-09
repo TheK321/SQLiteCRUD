@@ -77,7 +77,8 @@ private DatabaseHelper databaseAdapter;
             t2v.setTextColor(fondo);
             t2v.setGravity(Gravity.CENTER);
             tbrow.addView(t2v);
-
+            String finalFasignada = fasignada.replace("/", "");
+            String finalFentrega = fentrega.replace("/", "");;
             TextView t5v = new TextView(this);
             fasignada=fasignada.length()==8?fasignada.substring(0,2)+"/"+fasignada.substring(2,4)+"/"+fasignada.substring(4,8):fasignada.substring(0,1)+"/"+fasignada.substring(1,3)+"/"+fasignada.substring(3,7);
             fentrega=fentrega.length()==8?fentrega.substring(0,2)+"/"+fentrega.substring(2,4)+"/"+fentrega.substring(4,8):fentrega.substring(0,1)+"/"+fentrega.substring(1,3)+"/"+fentrega.substring(3,7);
@@ -88,10 +89,23 @@ private DatabaseHelper databaseAdapter;
             TextView t6v = new TextView(this);
 
             int finalI = i;
+
             tbrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(ActivityVerTodo.this, "Clicked on TableRow "+ finalI, Toast.LENGTH_SHORT).show();
+                    //open new activity ActivityActualizar
+                    Intent intent = new Intent(ActivityVerTodo.this, ActivityActualizar.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("nombre", name);
+                    intent.putExtra("descripcion", description);
+                    intent.putExtra("materia", materia);
+                    intent.putExtra("fasignada", finalFasignada);
+                    intent.putExtra("fentrega", finalFentrega);
+                    intent.putExtra("dificultad", dificultad);
+                    intent.putExtra("completada", completada);
+
+                    startActivity(intent);
+
                 }
             });
             stk.addView(tbrow);
