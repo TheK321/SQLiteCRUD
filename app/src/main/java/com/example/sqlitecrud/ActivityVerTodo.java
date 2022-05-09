@@ -32,7 +32,7 @@ private DatabaseHelper databaseAdapter;
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         TableLayout lvTareas = findViewById(R.id.table_main);
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM tarea where completada=0 ORDER BY fasignada asc", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM tarea ORDER BY fasignada asc", null);
 
         init(cursor);
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ActivityEliminar extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class ActivityEliminar extends AppCompatActivity {
         //get bundle
         Bundle bundle = getIntent().getExtras();
         //get id
-        int id = bundle.getInt("id");
+        int id = Integer.parseInt(bundle.getString("id"));
 
         // get a database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -32,6 +33,14 @@ public class ActivityEliminar extends AppCompatActivity {
             //Toast.makeText(this, "Database is created", Toast.LENGTH_LONG).show();
             //open a new activity
             aceptar.setOnClickListener(v -> {
+                //delete the row
+                int rows = database.rawQuery("DELETE FROM " + DatabaseHelper.TABLE_NAME + " WHERE " + DatabaseHelper.COLUMN_ID + " = " + id, null).getCount();
+                if (rows > 0) {
+                    //create a toast message to show that row is deleted
+                    Toast.makeText(this, "Eliminado con éxito", Toast.LENGTH_LONG).show();
+                }
+                //close the database
+                database.close();
                 //Create a new intent to open the new activity
                 Intent intent = new Intent(ActivityEliminar.this, ActivityVerTodo.class);
                 //Start the new activity

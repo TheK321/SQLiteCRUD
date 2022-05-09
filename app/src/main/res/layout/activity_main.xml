@@ -109,6 +109,14 @@
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
+                    android:id="@+id/tvid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No hay tareas pendientes"
+                    android:visibility="gone"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <TextView
                     android:id="@+id/tvSubtituloCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

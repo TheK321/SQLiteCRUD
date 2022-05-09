@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTituloCard = (TextView) findViewById(R.id.tvTituloCard);
         TextView tvSubtituloCard = (TextView) findViewById(R.id.tvSubtituloCard);
         TextView tvDescripcionCard = (TextView) findViewById(R.id.tvDescripcionCard);
+        TextView tvidCard = (TextView) findViewById(R.id.tvid);
+        Button btnTareaTerminada = (Button) findViewById(R.id.btnTareaTerminada);
 
         // Create a new database
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     //move to first row
                     cursor.moveToFirst();
                     //get the value of the column name
+                    @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_ID));
                     @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NOMBRE));
                     @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_DESCRIPCION));
                     @SuppressLint("Range") String materia = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_MATERIA));
@@ -86,6 +90,16 @@ public class MainActivity extends AppCompatActivity {
                     fentrega= fentrega.length()==8?fentrega.substring(0,2)+"/"+fentrega.substring(2,4)+"/"+fentrega.substring(4,8):fentrega.substring(0,1)+"/"+fentrega.substring(1,3)+"/"+fentrega.substring(3,7);
                     tvSubtituloCard.setText(materia+" | "+fentrega);
                     tvDescripcionCard.setText(description);
+                    tvidCard.setText(id);
+
+                    btnTareaTerminada.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String id = tvidCard.getText().toString();
+                            SQLiteDatabase database2 = databaseHelper.getWritableDatabase();
+                            database2.execSQL("UPDATE tarea SET completada=1 WHERE id="+id);
+                        }
+                    });
 
 
                 }
