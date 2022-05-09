@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     //add the value to the dataset
                     System.out.println(name + " " + description);
                     tvTituloCard.setText(name);
-                    fentrega= fentrega.length()==6?fentrega.substring(0,2)+"/"+fentrega.substring(2,4)+"/"+fentrega.substring(4,7):fentrega.substring(0,1)+"/"+fentrega.substring(1,3)+"/"+fentrega.substring(3,7);
+                    fentrega= fentrega.length()==8?fentrega.substring(0,2)+"/"+fentrega.substring(2,4)+"/"+fentrega.substring(4,8):fentrega.substring(0,1)+"/"+fentrega.substring(1,3)+"/"+fentrega.substring(3,7);
                     tvSubtituloCard.setText(materia+" | "+fentrega);
                     tvDescripcionCard.setText(description);
 

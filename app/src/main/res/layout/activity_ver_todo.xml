@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Estás son todas \n tus tareas"
+        android:text="Estas son todas \n tus tareas"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,18 +43,43 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_todo" />
 
-    <ListView
-        android:id="@+id/lvTareas"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:background="#3d455b"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView8"
+        app:layout_constraintVertical_bias="0.0">
+
+        <HorizontalScrollView
+            android:id="@+id/hscrll1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/table_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"></TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
